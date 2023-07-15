@@ -68,7 +68,15 @@ public class User {
 	}
 	
 	public boolean validatePin(String aPin) {
-		
+		try {
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			return MessageDigest.isEqual(md.digest(aPin.getBytes()),
+					this.pinhash);
+		} catch (NoSuchAlgorithmException e) {
+			System.out.println("Error! " + e);
+			e.printStackTrace();
+		}
+		return false;
 	}
 	 
 }

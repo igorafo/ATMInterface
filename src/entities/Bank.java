@@ -14,6 +14,14 @@ public class Bank {
 	// The list of accounts for this bank
 	private ArrayList<Account> accounts;
 
+	public Bank() {
+	}
+	
+	public Bank(String name) {
+		this.name = name;
+		this.users = new ArrayList<User>();
+		this.accounts = new ArrayList<Account>();
+	}
 	/**
 	 * Create new User exclusive Id
 	 * @return
