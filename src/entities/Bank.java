@@ -22,6 +22,16 @@ public class Bank {
 		this.users = new ArrayList<User>();
 		this.accounts = new ArrayList<Account>();
 	}
+	
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	/**
 	 * Create new User exclusive Id
 	 * @return

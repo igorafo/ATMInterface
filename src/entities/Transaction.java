@@ -31,5 +31,14 @@ public class Transaction {
 		this.memo = memo;
 		this.inAccount = inAccount;
 	}
+
+	public Double getAmount() {
+		return amount;
+	}
+
+	public void setAmount(Double amount) {
+		this.amount = amount;
+	}
+	
 	
 }

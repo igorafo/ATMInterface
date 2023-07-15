@@ -51,5 +51,23 @@ public class Account {
 		this.holder = holder;
 	}
 	
+	public String getSummaryLine() {
+		double balance = this.getBalance();
+		
+		if(balance>=0) {
+			return String.format("%s : $%.2f : %s", this.AccountId, balance, this.name);
+		} else {
+			return String.format("%s : $(%.2f)  : %s", this.AccountId, balance, this.name);
+		}
+		 
+	}
+	
+	public double getBalance() {
+		double balance = 0;
+		for(Transaction t : this.transactions) {
+			balance += t.getAmount();
+		}
+		return balance; 
+	}
 	
 }
