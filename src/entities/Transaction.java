@@ -40,5 +40,12 @@ public class Transaction {
 		this.amount = amount;
 	}
 	
-	
+	public String getSummaryLine() {
+		if(amount >= 0) {
+			return String.format("%s : $%.2f : %s", timestamp.toString(), amount , memo);
+		}
+		else {
+			return String.format("%s : $(%.2f) : %s", timestamp.toString(), amount , memo);
+		}
+	}
 }

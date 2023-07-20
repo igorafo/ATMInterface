@@ -8,7 +8,7 @@ public class Account {
 	private String name;
 	
 	//The account number ID
-	private String AccountId;
+	private String accountId;
 	
 	//The User object that is the owner of this account
 	private User holder;
@@ -22,7 +22,7 @@ public class Account {
 	public Account(String name, User holder, Bank bank) {
 		this.name = name;
 		this.holder = holder;
-		this.AccountId = bank.getNewAccountId();
+		this.accountId = bank.getNewAccountId();
 		this.transactions = new ArrayList<Transaction>();
 		
 	}
@@ -36,11 +36,11 @@ public class Account {
 	}
 
 	public String getAccountId() {
-		return AccountId;
+		return accountId;
 	}
 
 	public void setAccountId(String accountId) {
-		AccountId = accountId;
+		this.accountId = accountId;
 	}
 
 	public User getHolder() {
@@ -55,9 +55,9 @@ public class Account {
 		double balance = this.getBalance();
 		
 		if(balance>=0) {
-			return String.format("%s : $%.2f : %s", this.AccountId, balance, this.name);
+			return String.format("%s : $%.2f : %s", this.accountId, balance, this.name);
 		} else {
-			return String.format("%s : $(%.2f)  : %s", this.AccountId, balance, this.name);
+			return String.format("%s : $(%.2f)  : %s", this.accountId, balance, this.name);
 		}
 		 
 	}
@@ -70,4 +70,11 @@ public class Account {
 		return balance; 
 	}
 	
+	public void printTransactionHistory() {
+		System.out.printf("\nTransaction history for account %s\n", accountId);
+		for(int i = transactions.size()-1; i>=0; i--) {
+			System.out.printf(transactions.get(i).getSummaryLine());
+		}
+		System.out.println();
+	}
 }

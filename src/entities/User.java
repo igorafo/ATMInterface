@@ -78,13 +78,22 @@ public class User {
 		}
 		return false;
 	}
+	
 	public void printAccountsSummary() {
 		System.out.printf("\n\n%s's accounts summary " , this.firstName);
 		for(int i = 0; i< this.accounts.size(); i++) {
-			System.out.printf("%d) %s\n",
+			System.out.printf("%d) %s\n", i+1,
 					this.accounts.get(i).getSummaryLine());
 		}
 		System.out.println();
+	}
+	
+	public int numberOfAccounts() {
+		return accounts.size();
+	}
+	
+	public void printAccountTransactionHistory(int accountId) {
+		
 	}
 	 
 }

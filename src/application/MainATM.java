@@ -87,6 +87,13 @@ public class MainATM {
 		}
 		if(option != 5) {
 			MainATM.printUserMenu(user, sc);
-		}
+		} 
+	}
+	public static void showTransactionHistory(User user, Scanner sc) {
+		int account;
+		
+		do {
+			System.out.println();
+		} while();
 	}
 }
