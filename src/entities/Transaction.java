@@ -19,12 +19,23 @@ public class Transaction {
 	public Transaction() {
 	}
 
+	public Transaction(Double amount, Account inAccount) {
+		this.amount = amount;
+		this.timestamp = new Date();
+		this.inAccount = inAccount;
+	}
+	
 	public Transaction(Double amount, Date timestamp, Account inAccount) {
 		this.amount = amount;
 		this.timestamp = new Date();
 		this.inAccount = inAccount;
 	}
 
+	public Transaction(Double amount, String memo, Account inAccount) {
+		this(amount, inAccount);
+		this.memo = memo;
+	}
+	
 	public Transaction(Double amount, Date timestamp, String memo, Account inAccount) {
 		this.amount = amount;
 		this.timestamp = timestamp;

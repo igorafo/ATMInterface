@@ -55,9 +55,9 @@ public class Account {
 		double balance = this.getBalance();
 		
 		if(balance>=0) {
-			return String.format("%s : $%.2f : %s", this.accountId, balance, this.name);
+			return String.format("Account id: %s | Balance: $%.2f | Account type: %s", this.accountId, balance, this.name);
 		} else {
-			return String.format("%s : $(%.2f)  : %s", this.accountId, balance, this.name);
+			return String.format("Account id: %s | Balance: $%.2f | Account type: %s", this.accountId, balance, this.name);
 		}
 		 
 	}
@@ -70,11 +70,23 @@ public class Account {
 		return balance; 
 	}
 	
+	/*
+	 * Method to print the transaction history for the accounts
+	 */
 	public void printTransactionHistory() {
 		System.out.printf("\nTransaction history for account %s\n", accountId);
+		System.out.println("Day | Month | timeStamp | year | value");
 		for(int i = transactions.size()-1; i>=0; i--) {
-			System.out.printf(transactions.get(i).getSummaryLine());
+			
+			System.out.printf(transactions.get(i).getSummaryLine()+"\n");
 		}
 		System.out.println();
+	}
+	/*
+	 * Performing a transaction
+	 */
+	public void addTransaction(double amount, String memo) {
+		Transaction transaction = new Transaction(amount, memo, this);
+		transactions.add(transaction);
 	}
 }

@@ -13,7 +13,7 @@ public class User {
 	private String lastName;
 	
 	//User Id
-	private String UserId;
+	private String userId;
 	
 	//The MD5 hash of the user's pin number
 	private byte pinhash[];
@@ -34,8 +34,10 @@ public class User {
 			System.out.println("Error! " + e);
 			e.printStackTrace();
 		}
-		this.UserId = bank.getNewUserId();
+		this.userId = bank.getNewUserId();
 		this.accounts = new ArrayList<Account>();
+		
+		System.out.printf("New User %s, %s with ID %s created. \n" ,lastName , firstName ,  this.userId);
 	}
 	
 	
@@ -56,11 +58,11 @@ public class User {
 	}
 
 	public String getUserId() {
-		return UserId;
+		return userId;
 	}
 
 	public void setUserId(String userId) {
-		UserId = userId;
+		this.userId = userId;
 	}
 
 	public void addAccount(Account account) {
@@ -79,8 +81,11 @@ public class User {
 		return false;
 	}
 	
+	/*
+	 * Printing the user's accounts summary and info
+	 */
 	public void printAccountsSummary() {
-		System.out.printf("\n\n%s's accounts summary " , this.firstName);
+		System.out.printf("\n\n%s's accounts info \n" , this.firstName);
 		for(int i = 0; i< this.accounts.size(); i++) {
 			System.out.printf("%d) %s\n", i+1,
 					this.accounts.get(i).getSummaryLine());
@@ -93,7 +98,19 @@ public class User {
 	}
 	
 	public void printAccountTransactionHistory(int accountId) {
-		
+		accounts.get(accountId).printTransactionHistory();
+	}
+	
+	public double getAccountBalance(int accountId) {
+		return accounts.get(accountId).getBalance();
+	}
+	
+	public String getAccountUserId(int accountId) {
+		return accounts.get(accountId).getAccountId(); 
+	}
+	
+	public void addAccountTransaction(int accountId, double amount, String memo) {
+		accounts.get(accountId).addTransaction(amount, memo);
 	}
 	 
 }
